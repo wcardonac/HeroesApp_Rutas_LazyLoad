@@ -1,0 +1,15 @@
+<!-- vamos a hacer la parte del html para le dialog al momento de eliminar un registro -->
+
+<h1>¿Esta seguro?</h1>
+<hr>
+<p>
+    <!-- aqui ya puedo usar ala data con esto aparecera el nombre del heroe que este eliminado -->
+    esta a punto de borrar {{data.superhero}}
+    <br>
+    ¿Desae continuar?
+</p>
+
+<div>
+    <button mat-button (click)="borrar()" color="warn">Si, borrar</button>
+    <button mat-button (click)="cerrar()" >Cancelar</button>
+</div>

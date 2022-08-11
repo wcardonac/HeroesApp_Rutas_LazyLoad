@@ -1,1 +1,118 @@
-<p>agregar works!</p>
+<!-- en el video 216 vamos atrabajar con algunas cosas del html
+comompor ejemplo si estamos en la pagina de editar que diga editar y si estamos en la de agregar
+que diga agregar y otras cosas que vamos a organizar un poco -->
+
+<h1>
+    <!-- en este caso lo que tengo que cambiar es esto que diga nuevo o editar -->
+    <!-- esta seria una forma con uun ngif
+    <span *ngIf="heroe.id">Editar</span>
+    <span *ngIf="!heroe.id">Nuevo</span>
+esta es una manera-->
+<!-- hay una forma mas elegante de agregar esto con {{}} para poner una expresion de js
+dentronde las {{}} usaremos un ternario -->
+{{(heroe.id)?'Editar':'Nuevo'}}
+    Heroe
+     <small>
+        {{heroe.superhero}}
+    </small>
+</h1>
+
+<!-- estamos diseñando la panralla para el agregar heroe -->
+<!-- lo vamos a trabajar con un fromulario 
+
+mas adelante tendremos el manejo de formularios bastante amplia-->
+
+
+<!-- video 208: insertar lo datos a la base de datos -->
+<!-- vamos a trabajar con los campos, para poder capturar la info de cada uno de los campos
+vamos a hacer la insersion en la base de datos que en este caso tenemos como base de datos el archivo server -->
+<div fxLayout="row" fxLayoutGap="40px"fxLayout.xs="column">
+
+    <div fxFlex="50" fxLayout="column" >
+
+        <div fxLayout="row"
+             fxLayout.xs="column" 
+             fxLayoutGap="20px"
+             >
+            <!-- vamos a trabajar los campos campo 1
+               [(ngModel)]="heroe.superhero"  con esto asociamos el valor en el campo del formulario -->
+            <mat-form-field fxFlex="100">
+                <mat-label>Super Heroe</mat-label>
+                <input matInput
+                type="text"
+                [(ngModel)]="heroe.superhero" 
+                required>
+            </mat-form-field>
+            
+            <!-- vamos a trabajar los campos campo 2 -->
+            <mat-form-field fxFlex="100">
+                <mat-label>Alter Ego</mat-label>
+                <input matInput
+                       type="text"
+                       [(ngModel)]="heroe.alter_ego" 
+                       required>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field >
+            <mat-label>Primera Aparicion</mat-label>
+            <input matInput
+                   type="text"
+                   [(ngModel)]="heroe.first_appearance" 
+                   required>
+        </mat-form-field>
+
+        <mat-form-field >
+            <mat-label>Personajes</mat-label>
+            <input matInput
+                   type="text"
+                   [(ngModel)]="heroe.characters" 
+                   required>
+        </mat-form-field>
+
+        <mat-form-field >
+            <mat-label>Creador</mat-label>
+            <mat-select required  [(ngModel)]="heroe.publisher" >
+                <mat-option *ngFor="let publisher of publisher" [value]="publisher.id">
+                    {{publisher.desc}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field >
+            <mat-label>Foto Url</mat-label>
+            <input matInput
+                   type="url"
+                   [(ngModel)]="heroe.alt_img" 
+                   required>
+        </mat-form-field>
+        <!-- vamos a crear un metodo para cuando le demos guardar y que tome los valoes que estan en le formulario 
+        (click)="guardar()"-->
+        <div fxLayout>
+        <button mat-raised-button
+                color="primary"
+                (click)="guardar()">
+            <mat-icon>edit</mat-icon>
+            {{(heroe.id)?'Actualizar':'Crear'}}
+        </button>
+
+        <span class="spacer"></span>
+        <!-- vanos a crear el boton para borrar -->
+<!-- vamos a condicionar que aparezca este boton solo si hay un heroe para editar por que no puedo
+borrar algo que no tenga un id -->
+            <button *ngIf="heroe.id"
+                    mat-raised-button
+                    color="warn"
+                    (click)="borrarHeroe()">
+                <mat-icon>delete</mat-icon>
+                Borrar
+            </button>
+        </div>
+
+    </div>
+
+    <div  fxFlex="50" >
+        <img [src]=" heroe | imagen">
+    </div>
+
+</div>

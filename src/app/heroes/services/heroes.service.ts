@@ -40,7 +40,28 @@ export class HeroesService {
   
   sugerenciasheroes(termino:string):Observable<Heroe[]>{
     return this.http.get<Heroe[]>(`${this.baseUrl}/heroes?q=${termino}&_limit=6`);
-    
+  }
+  // hay que hacer una peticion post para hacer el la insersion a la base de datos
+  // hay que hacerlo mediante el servicio por que angular no tiene una forma directamente para
+  // conectarse a la base de datos no es que esto sea un inconveniente pero asi funciona la parte del front
+  // nosotros tenemos que mandar ha hacer el llamado desde nuestro servicio a nuestro rest-api el res-api es 
+  // quien literal va ha hacer la insersion de la base de datos
 
+  // nos creamos el servicio para la insrsion
+  agregarheroe( heroe:Heroe):Observable<Heroe>{
+    return this.http.post<Heroe>(`${this.baseUrl}/heroes`,heroe)
+      
+
+  }
+
+  actualizarheroe( heroe:Heroe):Observable<Heroe>{
+    return this.http.put<Heroe>(`${this.baseUrl}/heroes/${heroe.id}`,heroe)
+  }
+
+  //vamos a crear el servicionpara elimiar un heroes en este caso usamos el metodo delete
+
+  eliminarHeroe(id:string):Observable<any>{
+    return this.http.delete(`${this.baseUrl}/heroes/${id}`)
+    // despues hacemos el llamado de este servico donde lo vamos a usar
   }
 }
