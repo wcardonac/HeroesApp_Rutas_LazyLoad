@@ -40,8 +40,12 @@
         </button>
 
         <span class="spacer" ></span>
+        <!-- lo que quiero hacer es aqui mostrar el nombre del usuario activo 
+        primero inyectamos el servicio en el .ts-->
+        <span>{{auth.usuario}}</span>
 
-        <button mat-button>
+        <button mat-button
+                (click)="logout()">
             Logout
         </button>
     </mat-toolbar>

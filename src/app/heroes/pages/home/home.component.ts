@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { AuthService } from '../../../auth/services/auth.service';
+import { Auth } from '../../../auth/interfaces/auth.interface';
 
 
 @Component({
@@ -16,14 +18,29 @@ import { Subject } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  debouncer : Subject<string> = new Subject();
+//  vamos a inyectar el servicio del authservice para usar para colocar el nombre
+//  del usario que este usando mi app en el thml
 
-  constructor(private activaRoute:ActivatedRoute) { }
+  // auth!:Auth = this.authService.auth  esta es otra manera
+
+  // lo que uiqero haver es que el auth se va a llenar con la informacion del authservice
+
+  get auth(){
+    return this.authService.auth;
+  }
+
+  constructor(private router:Router,
+              private authService:AuthService) { }
 
   ngOnInit(): void {
 
     
      // this.heroesService.getheroeid().subscribe()
+  }
+
+  logout(){
+    this.router.navigate(['./auth'])
+  
   }
 
 }

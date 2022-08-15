@@ -1,1 +1,64 @@
-<p>login works!</p>
+<!-- seccion 15-proteccio de rutas
+en esta seccion principalmente vamos a trabajr con la proteccion de las 
+rutas de nuestra aplicacion,
+ en esta seccion no la vamos ahahacer robusta validada contra un backend
+ lo vamos a hacer de una manera superficial, vamos a sentar las bases 
+para mas adelante si hacerlo contra un back contra un jwt
+aqui vamos a hacer lo que s econoce como un guards
+un garp en angular no es mas que una simple clase
+esta clase le dira a angular que antes de muestyres esta ruta espera un momento para que ejecute un
+metodo y si ese metodo regresa un true significa que el usuario 
+puede ver esa ruta, pero si regresa lo contrario osea un false entonces entonces ahi angular
+dice "no puedes ver esta ruta" por consecunecia ni siquuiera va a ejecutar el constructor, y esto 
+es genial porque angular va evitar que se cargue el modulo 
+
+
+Esta es una sección muy importante, donde controlaremos de forma básica una autenticación,
+ mucho más adelante en el curso, realizaremos autenticación mediante JWT, pero antes de 
+ llegar a eso que son temas de Backend,
+ necesito que comprendamos cómo Angular nos puede servir para proteger nuestras rutas.
+Temas puntuales de la sección
+¿Qué veremos en esta sección?
+Este es un breve listado de los temas fundamentales:
+
+1-Protección de rutas
+
+2-Rutas privadas
+
+3-Rutas públicas
+
+4-Servicio de autenticación
+
+5-Guards
+
+6-CanActivate
+
+7-Can Load
+
+8-Mantener la sesión del usuario-->
+
+<!-- esta sera una seccion en la que nos enfocaremos puramente en la proteccion de la ruta
+no tanto en le proceso de autenticacion real, una vez se comprenda como se hace el proceso de una 
+autenticacion, hacer la otra parte de una autenticacion real 
+con un jwt u otro sistema es literalmente lo mismo, pero primero que eso
+vamos a comprender como bloquear y protejer nuestras rutas -->
+
+
+
+
+<mat-grid-list cols="1">
+  <mat-grid-tile>
+    <!-- // video 222 en esta clase se hara un servicio donde se va a centralizar 
+    // todo la informacion de la auntenticacion del usuario, 
+  cuando se toque este boton se tendra que validar contra algun lugar
+  este algun lugar sera el back que tenemos corriendo, recorar que aqui vamos es a aprender a protejer rutas
+  no es  tanto una auntenticacion real, eso lo vamos aha hacer ,as adelante en estos momento lo vamos
+  ha hacer en base a la proteccion de 
+ -->
+    <button mat-raised-button 
+            color="primary"
+            (click)="login()">
+        Ingresar
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>
